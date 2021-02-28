@@ -1,0 +1,1 @@
+import greetings  # ,goodbyesgreetings.say_hello()from goodbyes import say_goodbye as my_goodbyemy_goodbye()# goodbyes.say_bye_bye()# goodbyes.say_bye()def get_favorite_color():    return 'super-duper color'def get_favorite_number():    return 13

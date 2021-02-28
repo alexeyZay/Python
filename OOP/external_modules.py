@@ -1,0 +1,1 @@
+import termcolor2print(termcolor2.colored('some text','blue',"on_white",["underline"]))

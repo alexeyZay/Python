@@ -1,0 +1,1 @@
+def say_goodbye():    print('Goodbye !')def say_bye():    print('bye !')def say_bye_bye():    print('bye_bye !')

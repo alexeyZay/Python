@@ -1,0 +1,1 @@
+import firstdef function_1():    print('function_1() from second.py')print('top level in second.py')def function_2():    print('function_2() from second.py')if __name__ == '__main__':    print('second.py is been run directly')    function_1()else:    print('second.py has been imorted')

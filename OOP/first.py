@@ -1,0 +1,1 @@
+def function_1():    print('function_1() from first.py')print('top level in first.py')def function_2():    print('function_2() from first.py')if __name__ == '__main__':    print('first.py is been run directly')    function_1()else:    print('first.py has been imorted')

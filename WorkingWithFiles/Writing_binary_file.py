@@ -1,0 +1,1 @@
+with open('Z:\Python_Projects\WorkingWithFiles\some_numbers','bw') as biFile:    biFile.write(bytes (range(21)))with open('Z:\Python_Projects\WorkingWithFiles\some_numbers','br') as biFile:    for number in biFile:        print(number)
