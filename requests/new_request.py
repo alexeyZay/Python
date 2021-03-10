@@ -1,9 +1,8 @@
 import requests
 
 url='https://earthquake.usgs.gov/fdsnws/event/1/query?'
-response = requests.get(url, headers == {'Accept':'Application/json'
-
-},params=={
+#format=geojson&starttime=2014-01-01&endtime=2014-01-02
+response = requests.get(url, headers = {'Accept':'Application/json'},params={
     'format':'geojson',
     'starttime':'2019-01-01',
     'endtime':'2019-05-01',
@@ -13,4 +12,5 @@ response = requests.get(url, headers == {'Accept':'Application/json'
 })
 
 data = response.json()
-print(data['features'][1][properties][place])
+#print(data.)
+print(data['features'][1]['properties']['place'])
