@@ -1,5 +1,5 @@
-import bs4
-.BeautifulSoup
+
+import BeautifulSoup
 html_string = """
 	<!DOCTYPE html>
 	<html>
