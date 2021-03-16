@@ -1,5 +1,5 @@
+from bs4 import BeautifulSoup
 
-import BeautifulSoup
 html_string = """
 	<!DOCTYPE html>
 	<html>
@@ -9,7 +9,7 @@ html_string = """
 			
 			h1{
 				color: white;
-				background: red;
+				background: blue;
 			}
 
 			li{
@@ -48,10 +48,10 @@ html_string = """
 parsed_html = BeautifulSoup(html_string, 'html.parser')
 
 
-# print(parsed_html.body.ol.li)
-# print(parsed_html.find('li'))
-# print(type(parsed_html.find('li')))
-# print(parsed_html.find_all('li'))
+#print(parsed_html.body.ol.li)
+#print(parsed_html.find('li'))
+#print(type(parsed_html.find('li')))
+print(parsed_html.find_all('li'))
 # print(type(parsed_html.find_all('li')))
 # print(parsed_html.find(id="css-li"))
 # print(parsed_html.select('#css-li')[0])
