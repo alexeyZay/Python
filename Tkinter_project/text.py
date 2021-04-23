@@ -1,7 +1,5 @@
 import tkinter as tk
-from random import randint
-
-# --- classes ---
+from tkinter import ttk
 
 class ScrolledFrame(tk.Frame):
 
@@ -21,7 +19,7 @@ class ScrolledFrame(tk.Frame):
         # create bottom scrollbar and connect to canvas X
         self._horizontal_bar = tk.Scrollbar(self, orient='horizontal', command=self._canvas.xview)
         if horizontal:
-            self._horizontal_bar.grid(row=1, column=0, sticky='we')
+            self._horizontal_bar.grid(row=1, column=0, sticky='snwe')
         self._canvas.configure(xscrollcommand=self._horizontal_bar.set)
 
         # inner frame for widgets
@@ -29,8 +27,8 @@ class ScrolledFrame(tk.Frame):
         self._window = self._canvas.create_window((0, 0), window=self.inner, anchor='nw')
 
         # autoresize inner frame
-        self.columnconfigure(0, weight=1) # changed
-        self.rowconfigure(0, weight=1) # changed
+        self.columnconfigure(0, weight=2) # changed
+        self.rowconfigure(0, weight=2) # changed
 
         # resize when configure changed
         self.inner.bind('<Configure>', self.resize)
@@ -46,40 +44,32 @@ class ScrolledFrame(tk.Frame):
 
 class Question:
 
-    def __init__(self, parent, question):
+    def __init__(self, parent, question,question_key):
         self.parent = parent
         self.question = question
-        self.create_widgets()
-        self.answer=self.get_input()
+        self.question_key = question_key
+        self.create_widgets_inside()
+        #self.answer=self.get_input()
 
-    def get_input(self):
-        value = self.entry.get()
-        if value:
-            return value
-        # print('value:', value)
-        # if value == self.answer:
-        #     print("Esatto. è " + self.answer)
-        #     self.label['text'] = "Esatto"
+    def create_widgets_inside(self):
+        self.labelframe = tk.LabelFrame(self.parent, text=self.question_key)
+        self.labelframe.grid(fill="both", expand=True)
+        # self.labelframe.pack(fill="both", expand=True)
 
-    def create_widgets(self):
-        self.labelframe = tk.LabelFrame(self.parent, text="Area_to_Discuss:")
-        self.labelframe.pack(fill="both", expand=True)
-
-        self.label = tk.Label(self.labelframe, text=self.question,anchor='nw')
+        self.label = tk.Label(self.labelframe, text=self.question,anchor='nw',justify='left')
         self.label.pack(expand=True, fill='both',side='left')
 
-        self.entry = tk.Entry(self.labelframe)
+        self.entry = tk.Entry(self.labelframe,width='5',bd='3')
         self.entry.pack(side='right')
 
-        # self.button = tk.Button(self.labelframe, text="Click", command=self.get_input)
-        # self.button.pack()
 
 # --- main ---
 
 root = tk.Tk()
 root.title("Seniority")
-root.geometry("800x600")
+root.geometry("600x600")
 questions = {
+    "User_Name":"",
     "experience (years)": "",
 
     "General knowledge of testing types / tecniques": "Knowledge about software testing/testing approaches\nTesting expertise (ability to test independently,without help and control)\n* bugs\n* small features\n* features with not significant or without affected area",
@@ -124,12 +114,23 @@ questions = {
 
     "Team Management": "\n* pro-activity\n* test strategy (senior/manager)\n* metrics for QA/team (senior/manager)\n* visability (senior/manager)\n* solving problems (senior/manager)\n* delegation (senior/manager)\n* optimization of processes (senior/manager)"
 }
+def get_input(*args):
+    pass
+    #value = self.entry.get()
+    #if value:
+    #    return value
+    # print('value:', value)
+    # if value == self.answer:
+    #     print("Esatto. è " + self.answer)
+    #     self.label['text'] = "Esatto"®
+button = tk.Button(root, text="Calculate", command=get_input)
+button.pack(side='bottom',anchor='e')
 list_of_questions_keys = list(questions)
 list_of_questions_values = list(questions.values())
 window = ScrolledFrame(root)
 window.pack(expand=True, fill='both')
 counter=0
-for i in range(10):
-    Question(window.inner, list_of_questions_values[counter])
+for i in range(len(list_of_questions_keys)):
+    Question(window.inner, list_of_questions_values[counter],list_of_questions_keys[counter])
     counter+=1
 root.mainloop()
