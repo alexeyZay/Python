@@ -53,14 +53,14 @@ class Question:
 
     def create_widgets_inside(self):
         self.labelframe = tk.LabelFrame(self.parent, text=self.question_key)
-        self.labelframe.grid(fill="both", expand=True)
+        self.labelframe.pack(fill="both", expand=True)
         # self.labelframe.pack(fill="both", expand=True)
 
         self.label = tk.Label(self.labelframe, text=self.question,anchor='nw',justify='left')
         self.label.pack(expand=True, fill='both',side='left')
 
         self.entry = tk.Entry(self.labelframe,width='5',bd='3')
-        self.entry.pack(side='right')
+        self.entry.pack(side='right',padx='10')
 
 
 # --- main ---
@@ -123,8 +123,9 @@ def get_input(*args):
     # if value == self.answer:
     #     print("Esatto. è " + self.answer)
     #     self.label['text'] = "Esatto"®
-button = tk.Button(root, text="Calculate", command=get_input)
-button.pack(side='bottom',anchor='e')
+button = tk.Button(root, text="Calculate", command=get_input,bg='red',width='15')
+button.config
+button.pack(side='bottom',anchor='e', padx='18')
 list_of_questions_keys = list(questions)
 list_of_questions_values = list(questions.values())
 window = ScrolledFrame(root)
